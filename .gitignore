@@ -1,0 +1,9 @@
+# Editor stuff
+.vscode/
+
+**/*/bin
+**/*/obj
+
+# Misc
+# To be removed later
+Expm.WebApplication/

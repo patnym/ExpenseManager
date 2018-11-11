@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="graphiql" Version="1.2.0" />
+    <PackageReference Include="graphql" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Expm.Core\Expm.Core.csproj" />
+    <ProjectReference Include="..\Expm.Infrastructure\Expm.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
