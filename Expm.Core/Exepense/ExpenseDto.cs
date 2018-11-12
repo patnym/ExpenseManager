@@ -1,4 +1,4 @@
-namespace Expm.Core.Exepense
+namespace Expm.Core.Expense
 {
     public class ExpenseDto
     {

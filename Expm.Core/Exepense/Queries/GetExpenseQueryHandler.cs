@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using Expm.Core.Expense;
 using Microsoft.EntityFrameworkCore;
 
 namespace Expm.Core.Exepense.Queries
