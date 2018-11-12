@@ -9,14 +9,14 @@ using Xunit;
 
 namespace Expm.Tests.Unit.Core.Expense.Commands
 {
-    public class CreateExpenseCommandHandlerTests
+    public class CreateExpenseCommandHandlerTests : TestExpenseBase
     {
         private ExpenseEntity _seededEntity;
         private ICommandHandler<ExpenseDto, CreateExpenseCommand> _handler;
         private Mock<IExpenseRepository> _expenseRepository;
         private Mock<IUnitOfWork> _unitOfWork;
 
-        public CreateExpenseCommandHandlerTests()
+        public CreateExpenseCommandHandlerTests() : base()
         {
             _seededEntity = TestExpenseSeeder.Seed();
         }
@@ -60,7 +60,7 @@ namespace Expm.Tests.Unit.Core.Expense.Commands
             _unitOfWork = new MockUnitOfWorkBuilder()
                 .AddExpenseRepository(_expenseRepository.Object)
                 .Build();
-            _handler = new CreateExpenseCommandHandler(_unitOfWork.Object);
+            _handler = new CreateExpenseCommandHandler(_unitOfWork.Object, _mapper);
         }
     }
 }
