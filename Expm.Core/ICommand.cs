@@ -2,8 +2,9 @@ using System.Threading.Tasks;
 
 namespace Expm.Core
 {
-    public interface ICommandHandler<T> where T : class
+    public interface ICommandHandler<T, I> 
+        where T : class where I : class
     {
-        Task<T> Handle(T input);
+        Task<T> Handle(I input);
     }
 }

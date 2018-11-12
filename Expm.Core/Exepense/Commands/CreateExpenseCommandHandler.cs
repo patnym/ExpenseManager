@@ -3,7 +3,7 @@ using Expm.Core.Expense;
 
 namespace Expm.Core.Exepense.Commands
 {
-    public class CreateExpenseCommandHandler
+    public class CreateExpenseCommandHandler : ICommandHandler<ExpenseDto, CreateExpenseCommand>
     {
         private readonly IUnitOfWork _unitOfWork;
 

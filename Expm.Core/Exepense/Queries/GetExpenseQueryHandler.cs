@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Expm.Core.Exepense.Queries
 {
-    public class GetExpenseQueryHandler
+    public class GetExpenseQueryHandler : IQueryHandler<ExpenseDto, GetExpenseQuery>
     {
         private readonly IUnitOfWork _unitOfWork;
 
