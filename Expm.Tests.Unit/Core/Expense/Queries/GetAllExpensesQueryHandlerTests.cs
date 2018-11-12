@@ -11,7 +11,7 @@ namespace Expm.Tests.Unit.Core.Expense.Queries
 {
     public class GetAllExpensesQueryHandlerTests : TestExpenseBase
     {
-        private IQueryHandler<List<ExpenseDto>, GetAllExpensesQuery> _handler;
+        private IExpmRequestHandler<GetAllExpensesQuery, List<ExpenseDto>> _handler;
         private Mock<IExpenseRepository> _expenseRepository;
         private Mock<IUnitOfWork> _unitOfWork;
 

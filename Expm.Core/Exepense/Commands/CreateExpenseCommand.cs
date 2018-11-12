@@ -1,6 +1,9 @@
+using Expm.Core.Expense;
+using MediatR;
+
 namespace Expm.Core.Exepense.Commands
 {
-    public class CreateExpenseCommand
+    public class CreateExpenseCommand : IRequest<ExpenseDto>
     {
         public CreateExpenseCommand()
         {

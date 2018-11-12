@@ -3,6 +3,7 @@ using Expm.Core;
 using Expm.Core.Exepense;
 using Expm.Core.Exepense.Commands;
 using Expm.Core.Expense;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using Xunit;
@@ -12,7 +13,7 @@ namespace Expm.Tests.Unit.Core.Expense.Commands
     public class CreateExpenseCommandHandlerTests : TestExpenseBase
     {
         private ExpenseEntity _seededEntity;
-        private ICommandHandler<ExpenseDto, CreateExpenseCommand> _handler;
+        private IExpmRequestHandler<CreateExpenseCommand, ExpenseDto> _handler;
         private Mock<IExpenseRepository> _expenseRepository;
         private Mock<IUnitOfWork> _unitOfWork;
 

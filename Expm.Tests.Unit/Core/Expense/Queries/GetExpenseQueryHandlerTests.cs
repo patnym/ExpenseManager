@@ -13,7 +13,7 @@ namespace Expm.Tests.Unit.Core.Expense.Queries
     public class GetExpenseQueryHandlerTests : TestExpenseBase
     {
         private ExpenseEntity _seededEntity;
-        private IQueryHandler<ExpenseDto, GetExpenseQuery> _handler;
+        private IExpmRequestHandler<GetExpenseQuery, ExpenseDto> _handler;
         private Mock<IExpenseRepository> _expenseRepository;
         private Mock<IUnitOfWork> _unitOfWork;
 

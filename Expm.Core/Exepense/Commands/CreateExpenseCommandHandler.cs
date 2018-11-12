@@ -1,10 +1,12 @@
+using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Expm.Core.Expense;
+using MediatR;
 
 namespace Expm.Core.Exepense.Commands
 {
-    public class CreateExpenseCommandHandler : ICommandHandler<ExpenseDto, CreateExpenseCommand>
+    public class CreateExpenseCommandHandler : IExpmRequestHandler<CreateExpenseCommand, ExpenseDto>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -15,7 +17,8 @@ namespace Expm.Core.Exepense.Commands
             _mapper = mapper;
         }
 
-        public async Task<ExpenseDto> Handle(CreateExpenseCommand request) 
+        public async Task<ExpenseDto> Handle(CreateExpenseCommand request, 
+            CancellationToken token = default(CancellationToken)) 
         {
             var result = await _unitOfWork.Expenses
                 .AddAsync(new ExpenseEntity {
