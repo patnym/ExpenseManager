@@ -1,25 +1,22 @@
-using AutoMapper;
-using Expm.Core;
 using Expm.Core.Exepense.Queries;
 using GraphQL.Types;
+using MediatR;
 
 namespace Expm.Application.Models.ExpenseModel
 {
     public class ExpenseQuery : ObjectGraphType
     {
         
-        public ExpenseQuery(IUnitOfWork unitOfWork, IMapper mapper)
+        public ExpenseQuery(IMediator mediator)
         {
             FieldAsync<ExpenseType>(
                 "expense",
-                "Represents an expense collection, like reciepts",
+                "Get a specific expense",
                 arguments: new QueryArguments(
                     new QueryArgument<StringGraphType> { Name = "id" }
                 ),
                 resolve: async (ctx) => {
-                    var cmd = new GetExpenseQuery(ctx.GetArgument<string>("id"));
-                    var handlr = new GetExpenseQueryHandler(unitOfWork, mapper);
-                    return await handlr.Handle(cmd);
+                    return await mediator.Send(new GetExpenseQuery(ctx.GetArgument<string>("id")));
                 }
             );
 
@@ -27,9 +24,7 @@ namespace Expm.Application.Models.ExpenseModel
                 "expenses",
                 "Get all expenses",
                 resolve: async ctx => {
-                    var cmd = new GetAllExpensesQuery();
-                    var handlr = new GetAllExpensesQueryHandler(unitOfWork, mapper);
-                    return await handlr.Handle(cmd);
+                    return await mediator.Send(new GetAllExpensesQuery());
                 }
             );
         }

@@ -1,13 +1,12 @@
-using AutoMapper;
-using Expm.Core;
 using Expm.Core.Exepense.Commands;
 using GraphQL.Types;
+using MediatR;
 
 namespace Expm.Application.Models.ExpenseModel
 {
     public class ExpenseMutation : ObjectGraphType
     {
-        public ExpenseMutation(IUnitOfWork unitOfWork, IMapper mapper)
+        public ExpenseMutation(IMediator mediator)
         {
             Name = "CreateExpenseMutation";
 
@@ -18,10 +17,9 @@ namespace Expm.Application.Models.ExpenseModel
                 ),
                 resolve: async (ctx) => {
                     var input  = ctx.GetArgument<ExpenseInputType>("expense");
-                    var cmd = new CreateExpenseCommand {
+                    return await mediator.Send(new CreateExpenseCommand {
                         Name = input.Name
-                    };
-                    return await new CreateExpenseCommandHandler(unitOfWork, mapper).Handle(cmd);
+                    });
                 }
             );
         }

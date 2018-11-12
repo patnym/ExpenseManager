@@ -5,6 +5,7 @@ using Expm.Infrastructure;
 using GraphiQl;
 using GraphQL;
 using GraphQL.Types;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -35,6 +36,7 @@ namespace Expm.Application
             });
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddMediatR();
             services.AddAutoMapper();
 
             ConfigureGraphQL(services);
