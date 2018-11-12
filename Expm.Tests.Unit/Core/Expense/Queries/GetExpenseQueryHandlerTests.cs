@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Expm.Core;
+using Expm.Core.Exceptions;
 using Expm.Core.Exepense.Queries;
 using Expm.Core.Expense;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +26,7 @@ namespace Expm.Tests.Unit.Core.Expense.Queries
         public async void Can_retrieve_expense_by_id()
         {
             //Given
-            GetShouldReturn(_seededEntity);
+            GetShouldReturn(_seededEntity, _seededEntity.Id);
 
             //When
             var expenseQuery = new GetExpenseQuery(_seededEntity.Id);
@@ -39,7 +40,7 @@ namespace Expm.Tests.Unit.Core.Expense.Queries
         public async void Dto_returned_is_valid()
         {
             //Given
-            GetShouldReturn(_seededEntity);
+            GetShouldReturn(_seededEntity, _seededEntity.Id);
 
             //When
             var entity = await _handler.Handle(new GetExpenseQuery(_seededEntity.Id));
@@ -49,9 +50,21 @@ namespace Expm.Tests.Unit.Core.Expense.Queries
             Assert.Equal(_seededEntity.Name, entity.Name);
         }
 
-        private void GetShouldReturn(ExpenseEntity entity) {
+        [Fact]
+        public async void Get_should_throw_exception_when_wrong_id()
+        {
+            //Given
+            GetShouldReturn(null);
+
+            //Then
+            await Assert.ThrowsAsync<NoEntityException>(async () => {
+                await _handler.Handle(new GetExpenseQuery("invalid"));
+            });
+        }
+
+        private void GetShouldReturn(ExpenseEntity entity, string whenId = "") {
             _expenseRepository = new MockExpenseRepositoryBuilder()
-                .GetAsyncIs(id => id == entity.Id, entity)
+                .GetAsyncIs(id => id == whenId, entity)
                 .Build();
             _unitOfWork = new MockUnitOfWorkBuilder()
                 .AddExpenseRepository(_expenseRepository.Object)
