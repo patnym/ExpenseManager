@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Expm.Core.Exepense;
+using Expm.Core.Expense;
 
 namespace Expm.Application.Models
 {

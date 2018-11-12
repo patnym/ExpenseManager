@@ -1,3 +1,4 @@
+using AutoMapper;
 using Expm.Core;
 using Expm.Core.Exepense.Queries;
 using GraphQL.Types;
@@ -7,7 +8,7 @@ namespace Expm.Application.Models.ExpenseModel
     public class ExpenseQuery : ObjectGraphType
     {
         
-        public ExpenseQuery(IUnitOfWork unitOfWork)
+        public ExpenseQuery(IUnitOfWork unitOfWork, IMapper mapper)
         {
             FieldAsync<ExpenseType>(
                 "expense",
@@ -17,7 +18,7 @@ namespace Expm.Application.Models.ExpenseModel
                 ),
                 resolve: async (ctx) => {
                     var cmd = new GetExpenseQuery(ctx.GetArgument<string>("id"));
-                    var handlr = new GetExpenseQueryHandler(unitOfWork);
+                    var handlr = new GetExpenseQueryHandler(unitOfWork, mapper);
                     return await handlr.Handle(cmd);
                 }
             );
@@ -27,7 +28,7 @@ namespace Expm.Application.Models.ExpenseModel
                 "Get all expenses",
                 resolve: async ctx => {
                     var cmd = new GetAllExpensesQuery();
-                    var handlr = new GetAllExpensesQueryHandler(unitOfWork);
+                    var handlr = new GetAllExpensesQueryHandler(unitOfWork, mapper);
                     return await handlr.Handle(cmd);
                 }
             );

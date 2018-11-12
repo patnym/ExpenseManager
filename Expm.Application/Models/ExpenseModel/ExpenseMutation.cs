@@ -1,3 +1,4 @@
+using AutoMapper;
 using Expm.Core;
 using Expm.Core.Exepense.Commands;
 using GraphQL.Types;
@@ -6,7 +7,7 @@ namespace Expm.Application.Models.ExpenseModel
 {
     public class ExpenseMutation : ObjectGraphType
     {
-        public ExpenseMutation(IUnitOfWork unitOfWork)
+        public ExpenseMutation(IUnitOfWork unitOfWork, IMapper mapper)
         {
             Name = "CreateExpenseMutation";
 
@@ -20,7 +21,7 @@ namespace Expm.Application.Models.ExpenseModel
                     var cmd = new CreateExpenseCommand {
                         Name = input.Name
                     };
-                    return await new CreateExpenseCommandHandler(unitOfWork).Handle(cmd);
+                    return await new CreateExpenseCommandHandler(unitOfWork, mapper).Handle(cmd);
                 }
             );
         }

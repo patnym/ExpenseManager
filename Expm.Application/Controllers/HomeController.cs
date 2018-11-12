@@ -13,24 +13,13 @@ namespace Expm.Application.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly CreateExpenseCommandHandler _cHandler;
-        // private readonly GetExpenseCommandHandler _rHandler;
         public HomeController(IUnitOfWork unitOfWork) 
         {
-            _cHandler = new CreateExpenseCommandHandler(unitOfWork);
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var expense = await _cHandler.Handle(new CreateExpenseCommand {
-                Name = Guid.NewGuid().ToString()
-            });
-
-            return View(new IndexModel {
-                Expenses = new List<ExpenseDto> {
-                    expense
-                }
-            });
+            return View();
         }
 
         public IActionResult About()

@@ -1,4 +1,4 @@
-using Expm.Core.Exepense;
+using Expm.Core.Expense;
 using GraphQL.Types;
 
 namespace Expm.Application.Models.ExpenseModel

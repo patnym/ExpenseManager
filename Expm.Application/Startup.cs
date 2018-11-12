@@ -1,4 +1,5 @@
-﻿using Expm.Application.Models.ExpenseModel;
+﻿using AutoMapper;
+using Expm.Application.Models.ExpenseModel;
 using Expm.Core;
 using Expm.Infrastructure;
 using GraphiQl;
@@ -34,6 +35,7 @@ namespace Expm.Application
             });
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddAutoMapper();
 
             ConfigureGraphQL(services);
 
