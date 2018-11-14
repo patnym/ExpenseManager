@@ -1,8 +1,7 @@
 using System.Threading;
 using Expm.Core;
-using Expm.Core.Exepense;
-using Expm.Core.Exepense.Commands;
 using Expm.Core.Expense;
+using Expm.Core.Expense.Commands;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Moq;

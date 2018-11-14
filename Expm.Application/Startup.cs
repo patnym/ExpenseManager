@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Expm.Application.Models.ExpenseModel;
 using Expm.Core;
+using Expm.Core.Expense.Commands;
 using Expm.Infrastructure;
 using GraphiQl;
 using GraphQL;

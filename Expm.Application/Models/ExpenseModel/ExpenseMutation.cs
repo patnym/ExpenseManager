@@ -1,4 +1,4 @@
-using Expm.Core.Exepense.Commands;
+using Expm.Core.Expense.Commands;
 using GraphQL.Types;
 using MediatR;
 

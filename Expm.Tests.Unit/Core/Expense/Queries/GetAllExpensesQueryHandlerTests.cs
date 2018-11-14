@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Expm.Core;
-using Expm.Core.Exepense;
-using Expm.Core.Exepense.Queries;
 using Expm.Core.Expense;
+using Expm.Core.Expense.Queries;
 using Moq;
 using Xunit;
 

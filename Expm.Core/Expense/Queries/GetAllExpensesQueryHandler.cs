@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Expm.Core.Expense;
 
-namespace Expm.Core.Exepense.Queries
+namespace Expm.Core.Expense.Queries
 {
     public class GetAllExpensesQueryHandler : IExpmRequestHandler<GetAllExpensesQuery, List<ExpenseDto>>
     {

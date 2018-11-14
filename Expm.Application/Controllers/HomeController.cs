@@ -5,9 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Expm.Application.Models;
-using Expm.Core.Exepense.Commands;
 using Expm.Core;
-using Expm.Core.Exepense;
 
 namespace Expm.Application.Controllers
 {

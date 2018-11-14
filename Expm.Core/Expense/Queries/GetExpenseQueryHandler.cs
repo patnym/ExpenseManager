@@ -6,7 +6,7 @@ using Expm.Core.Exceptions;
 using Expm.Core.Expense;
 using Microsoft.EntityFrameworkCore;
 
-namespace Expm.Core.Exepense.Queries
+namespace Expm.Core.Expense.Queries
 {
     public class GetExpenseQueryHandler : IExpmRequestHandler<GetExpenseQuery, ExpenseDto>
     {

@@ -1,7 +1,7 @@
 using Expm.Core.Expense;
 using MediatR;
 
-namespace Expm.Core.Exepense.Queries
+namespace Expm.Core.Expense.Queries
 {
     public class GetExpenseQuery : IRequest<ExpenseDto>
     {
