@@ -3,6 +3,8 @@ using Expm.Application.Models.ExpenseModel;
 using Expm.Core;
 using Expm.Core.Expense.Commands;
 using Expm.Infrastructure;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using GraphiQl;
 using GraphQL;
 using GraphQL.Types;
@@ -37,12 +39,15 @@ namespace Expm.Application
             });
             services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddMediatR();
-            services.AddAutoMapper();
-
+            services.AddMediatR(Core.Project.Assembly);
+            services.AddAutoMapper(cfg => cfg.AddProfiles(Core.Project.Assembly));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            
             ConfigureGraphQL(services);
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssembly(Core.Project.Assembly));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
