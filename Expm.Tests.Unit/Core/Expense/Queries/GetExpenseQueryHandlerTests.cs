@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Expm.Core;
 using Expm.Core.Exceptions;
@@ -40,6 +42,10 @@ namespace Expm.Tests.Unit.Core.Expense.Queries
         public async void Dto_returned_is_valid()
         {
             //Given
+            _seededEntity.ExpenseEntries.AddRange(new List<ExpenseEntryEntity> {
+                TestExpenseSeeder.SeedExpenseEntry(),
+                TestExpenseSeeder.SeedExpenseEntry()
+            });
             GetShouldReturn(_seededEntity, _seededEntity.Id);
 
             //When
@@ -48,6 +54,12 @@ namespace Expm.Tests.Unit.Core.Expense.Queries
             //Then
             Assert.Equal(_seededEntity.Id, entity.Id);
             Assert.Equal(_seededEntity.Name, entity.Name);
+            TestExpenseHelper.AssertExpenseEntryEntityMatchesDto(
+                _seededEntity.ExpenseEntries.ElementAt(0),
+                entity.ExpenseEntries.ElementAt(0));
+            TestExpenseHelper.AssertExpenseEntryEntityMatchesDto(
+                _seededEntity.ExpenseEntries.ElementAt(1),
+                entity.ExpenseEntries.ElementAt(1));
         }
 
         [Fact]
