@@ -19,7 +19,7 @@ namespace Expm.Tests.Unit.Core.Expense.Queries
 
         public GetExpenseQueryHandlerTests() : base()
         {
-            _seededEntity = TestExpenseSeeder.Seed();
+            _seededEntity = TestExpenseSeeder.SeedExpense();
         }
 
         [Fact]

@@ -18,7 +18,7 @@ namespace Expm.Tests.Unit.Core.Expense.Commands
 
         public CreateExpenseCommandHandlerTests() : base()
         {
-            _seededEntity = TestExpenseSeeder.Seed();
+            _seededEntity = TestExpenseSeeder.SeedExpense();
         }
 
         [Fact]
@@ -50,7 +50,7 @@ namespace Expm.Tests.Unit.Core.Expense.Commands
             });
 
             //Then
-            TestExpenseHelper.AssertEntityMatchesDto(_seededEntity, entity);
+            TestExpenseHelper.AssertExpenseEntityMatchesDto(_seededEntity, entity);
         }
 
         private void AddShouldReturn(ExpenseEntity entity) {

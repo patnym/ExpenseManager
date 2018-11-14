@@ -5,7 +5,7 @@ namespace Expm.Tests.Unit.Core.Expense
 {
     public static class TestExpenseHelper
     {
-        public static void AssertEntityMatchesDto(ExpenseEntity entity, ExpenseDto dto) {
+        public static void AssertExpenseEntityMatchesDto(ExpenseEntity entity, ExpenseDto dto) {
             Assert.Equal(entity.Id, dto.Id);
             Assert.Equal(entity.Name, dto.Name);
         }

@@ -16,12 +16,12 @@ namespace Expm.Tests.Unit.Core.Expense.Commands
 
         [Theory]
         [MemberData(nameof(GetData))]
-        public void Can_Validate_Commands(CreateExpenseCommand cmd, bool isExpected)
+        public void Can_Validate_Commands(CreateExpenseCommand cmd, bool shouldBeValid)
         {
             //When
             var result = _validator.Validate(cmd);
             //Then
-            Assert.True(result.IsValid == isExpected);
+            Assert.True(result.IsValid == shouldBeValid);
         }
 
         public static IEnumerable<object[]> GetData() {

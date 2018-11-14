@@ -57,7 +57,7 @@ namespace Expm.Tests.Unit.Core.Expense.Queries
         private List<ExpenseEntity> SeedEntities(int amount) {
             var entities = new List<ExpenseEntity>();
             for(int i = 0; i < amount; i++) {
-                entities.Add(TestExpenseSeeder.Seed());
+                entities.Add(TestExpenseSeeder.SeedExpense());
             }
             return entities;
         }
