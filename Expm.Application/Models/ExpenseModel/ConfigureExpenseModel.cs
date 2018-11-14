@@ -8,16 +8,11 @@ namespace Expm.Application.Models.ExpenseModel
     {
         
         public static void Configure(IServiceCollection services) {
-            services.AddSingleton<ExpenseSchema>();
-            services.AddSingleton<ExpenseQuery>();
-            services.AddSingleton<ExpenseMutation>();
-            services.AddSingleton<ExpenseType>();
-            services.AddSingleton<ExpenseInputType>();
+            services.AddScoped<ExpenseQuery>();
+            services.AddScoped<ExpenseMutation>();
+            services.AddScoped<ExpenseType>();
+            services.AddScoped<ExpenseInputType>();
+            services.AddScoped<ISchema, ExpenseSchema>();
         }
-
-        public static void ConfigureSchema(IServiceCollection services, ServiceProvider provider) {
-            services.AddSingleton<ISchema>(new ExpenseSchema(new FuncDependencyResolver(type => provider.GetService(type))));
-        }
-
     }
 }

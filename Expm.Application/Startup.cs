@@ -34,7 +34,7 @@ namespace Expm.Application
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddMediatR();
             services.AddAutoMapper();
@@ -72,13 +72,7 @@ namespace Expm.Application
 
         private void ConfigureGraphQL(IServiceCollection services) {
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
-
-            //All pre-configuration
             ConfigureExpenseModel.Configure(services);
-
-            var provider = services.BuildServiceProvider();
-            //Post configuration
-            ConfigureExpenseModel.ConfigureSchema(services, provider);
         }
     }
 }
