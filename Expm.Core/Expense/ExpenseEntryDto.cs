@@ -1,20 +1,18 @@
-
 using System;
 
-namespace Expm.Core.Expense 
+namespace Expm.Core.Expense
 {
-
-    public class ExpenseEntryEntity : BaseEntity 
+    public class ExpenseEntryDto
     {
-        public ExpenseEntryEntity() 
+        public ExpenseEntryDto()
         {
             Description = "";
         }
 
+        public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime Date { get; set; }
         public decimal Cost { get; set; }
     }
-
 }
