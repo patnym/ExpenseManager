@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Expm.Core;
@@ -12,6 +13,16 @@ namespace Expm.Infrastructure
 
         public async Task<int> CompleteAsync(CancellationToken token = default(CancellationToken))
         {
+            var exp = await Expenses.AllAsync();
+            foreach(var item in exp)
+            {
+                item.ExpenseEntries.ForEach(en => {
+                    if(string.IsNullOrEmpty(en.Id)) {
+                        en.Id = Guid.NewGuid().ToString();
+                    }
+                });
+            }
+
             return 0;
         }
     }

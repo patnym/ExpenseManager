@@ -4,10 +4,10 @@ using MediatR;
 
 namespace Expm.Application.Models.ExpenseModel
 {
-    public class ExpenseQuery : ObjectGraphType
+    internal sealed class ExpenseQuery : ObjectGraphType
     {
         
-        public ExpenseQuery(IMediator mediator)
+        public ExpenseQuery(IMediator _mediator)
         {
             FieldAsync<ExpenseType>(
                 "expense",
@@ -16,7 +16,7 @@ namespace Expm.Application.Models.ExpenseModel
                     new QueryArgument<StringGraphType> { Name = "id" }
                 ),
                 resolve: async (ctx) => {
-                    return await mediator.Send(new GetExpenseQuery(ctx.GetArgument<string>("id")));
+                    return await _mediator.Send(new GetExpenseQuery(ctx.GetArgument<string>("id")));
                 }
             );
 
@@ -24,7 +24,7 @@ namespace Expm.Application.Models.ExpenseModel
                 "expenses",
                 "Get all expenses",
                 resolve: async ctx => {
-                    return await mediator.Send(new GetAllExpensesQuery());
+                    return await _mediator.Send(new GetAllExpensesQuery());
                 }
             );
         }

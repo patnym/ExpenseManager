@@ -3,13 +3,17 @@ using GraphQL.Types;
 
 namespace Expm.Application.Models.ExpenseModel
 {
-    public class ExpenseType : ObjectGraphType<ExpenseDto>
+    internal sealed class ExpenseType : ObjectGraphType<ExpenseDto>
     {
 
         public ExpenseType()
         {
             Field(x => x.Id);
             Field(x => x.Name);
+            Field<ListGraphType<ExpenseEntryType>>(
+                name: "expenses",
+                resolve: context => context.Source.ExpenseEntries
+            );
         }
     }
 }

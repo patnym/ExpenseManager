@@ -1,17 +1,15 @@
+using Expm.Core.Expense;
+using Expm.Core.Expense.Commands;
 using GraphQL.Types;
 
 namespace Expm.Application.Models.ExpenseModel
 {
-    public class ExpenseInputType : InputObjectGraphType
+    internal sealed class ExpenseInputType : InputObjectGraphType<CreateExpenseCommand>
     {
         
         public ExpenseInputType()
         {
-            Name = "ExpenseInput";
-            Field<StringGraphType>(
-                "name",
-                "Name of the expense"
-            );
+            Field(x => x.Name);
         }
 
     }

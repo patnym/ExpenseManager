@@ -3,7 +3,7 @@ using GraphQL.Types;
 
 namespace Expm.Application.Models.ExpenseModel
 {
-    public class ExpenseSchema : Schema
+    internal sealed class ExpenseSchema : Schema
     {
         
         public ExpenseSchema(IDependencyResolver  resolver) : base(resolver)

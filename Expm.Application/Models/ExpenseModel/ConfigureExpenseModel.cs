@@ -11,7 +11,9 @@ namespace Expm.Application.Models.ExpenseModel
             services.AddScoped<ExpenseQuery>();
             services.AddScoped<ExpenseMutation>();
             services.AddScoped<ExpenseType>();
+            services.AddScoped<ExpenseEntryType>();
             services.AddScoped<ExpenseInputType>();
+            services.AddScoped<ExpenseEntryInputType>();
             services.AddScoped<ISchema, ExpenseSchema>();
         }
     }
