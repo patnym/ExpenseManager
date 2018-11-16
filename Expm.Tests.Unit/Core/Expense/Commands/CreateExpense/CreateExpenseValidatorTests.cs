@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Expm.Core.Expense.Commands;
+using Expm.Core.Expense.Commands.CreateExpense;
 using FluentValidation;
 using Xunit;
 
-namespace Expm.Tests.Unit.Core.Expense.Commands
+namespace Expm.Tests.Unit.Core.Expense.Commands.CreateExpense
 {
     public class CreateExpenseValidatorTests
     {

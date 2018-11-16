@@ -1,13 +1,13 @@
 using System.Threading;
 using Expm.Core;
 using Expm.Core.Expense;
-using Expm.Core.Expense.Commands;
+using Expm.Core.Expense.Commands.CreateExpense;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using Xunit;
 
-namespace Expm.Tests.Unit.Core.Expense.Commands
+namespace Expm.Tests.Unit.Core.Expense.Commands.CreateExpense
 {
     public class CreateExpenseCommandHandlerTests : TestExpenseBase
     {

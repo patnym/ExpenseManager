@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Expm.Core;
 using Expm.Core.Expense;
-using Expm.Core.Expense.Queries;
+using Expm.Core.Expense.Queries.GetAllExpenses;
 using Moq;
 using Xunit;
 
-namespace Expm.Tests.Unit.Core.Expense.Queries
+namespace Expm.Tests.Unit.Core.Expense.Queries.GetAllExpenses
 {
     public class GetAllExpensesQueryHandlerTests : TestExpenseBase
     {

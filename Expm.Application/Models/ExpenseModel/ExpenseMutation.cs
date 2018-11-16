@@ -1,4 +1,4 @@
-using Expm.Core.Expense.Commands;
+using Expm.Core.Expense.Commands.CreateExpense;
 using Expm.Core.Expense.Commands.CreateExpenseEntry;
 using GraphQL.Types;
 using MediatR;

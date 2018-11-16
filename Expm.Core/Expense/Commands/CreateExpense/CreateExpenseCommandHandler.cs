@@ -4,7 +4,7 @@ using AutoMapper;
 using Expm.Core.Expense;
 using MediatR;
 
-namespace Expm.Core.Expense.Commands
+namespace Expm.Core.Expense.Commands.CreateExpense
 {
     public class CreateExpenseCommandHandler : IExpmRequestHandler<CreateExpenseCommand, ExpenseDto>
     {

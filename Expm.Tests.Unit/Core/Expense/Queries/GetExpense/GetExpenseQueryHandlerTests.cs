@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Expm.Core;
 using Expm.Core.Exceptions;
 using Expm.Core.Expense;
-using Expm.Core.Expense.Queries;
+using Expm.Core.Expense.Queries.GetExpense;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using Xunit;

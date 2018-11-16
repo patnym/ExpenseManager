@@ -1,4 +1,5 @@
-using Expm.Core.Expense.Queries;
+using Expm.Core.Expense.Queries.GetAllExpenses;
+using Expm.Core.Expense.Queries.GetExpense;
 using GraphQL.Types;
 using MediatR;
 
