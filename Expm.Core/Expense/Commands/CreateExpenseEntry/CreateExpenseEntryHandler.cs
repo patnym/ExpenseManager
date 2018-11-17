@@ -19,8 +19,7 @@ namespace Expm.Core.Expense.Commands.CreateExpenseEntry
         public async Task<ExpenseDto> Handle(CreateExpenseEntryCommand input, CancellationToken token = default(CancellationToken))
         {
             var entity = await _unitOfWork.Expenses.GetAsync(input.ExpenseId).ConfigureAwait(false);
-            Guard.AgainstNull(entity, $"No entity of id '{input.ExpenseId}' exists");
-
+            Guard.Entity.AgainstNull(entity, input.ExpenseId);
             entity.ExpenseEntries.Add(new ExpenseEntryEntity {
                 Name = input.Name,
                 Description = input.Description,

@@ -22,7 +22,7 @@ namespace Expm.Core.Expense.Queries.GetExpense
             CancellationToken token = default(CancellationToken)) 
         {
             var entity = await _unitOfWork.Expenses.GetAsync(query.Id);
-            Guard.AgainstNull(entity, $"No entity of id '{query.Id}' exists");
+            Guard.Entity.AgainstNull(entity, query.Id);
             return _mapper.Map<ExpenseDto>(entity);
         }
     }
